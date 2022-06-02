@@ -1,5 +1,6 @@
 package com.firstSpringProject.learnspringframework;
 
+import com.firstSpringProject.learnspringframework.game.ContraGame;
 import com.firstSpringProject.learnspringframework.game.GameRunner;
 import com.firstSpringProject.learnspringframework.game.MarioGame;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +17,14 @@ public class LearnSpringFrameworkApplication {
 		we have to make a lot of changes in gameRunner class and other places, that is what we call that gameRunner is
 		tightly coupled with MarioGame
 		 */
+		ContraGame contra = new ContraGame();
+		/*
+		Here we introduced as part 1 of lose coupling, now both mario game and game runner implements GameRunner interface
+		with minimal code changes, this is called as lose coupling.
+		 */
+		GameRunner runner2 = new GameRunner(contra);
 		runner.run(game);
+		runner2.run(contra);
 	}
 
 }
